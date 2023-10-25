@@ -23,7 +23,7 @@ Y allí se procede a instalar los paquetes de laravel, que están descritos en e
 
 `composer install`
 
-*Nota: Es posible que al ser primera vez que se instala laravel necesite librerías PHP extras, las cuales pueden ser instaladas a través del comando `sudo apt install php-curl php-xml`, o el comando equivalente según tu distribución.*
+*Nota: Es posible que al ser primera vez que se instala laravel necesite librerías PHP extras, las cuales pueden ser instaladas a través del comando `sudo apt install php-curl php-xml php-mysql`, o el comando equivalente según tu distribución.*
 
 Después de instalar las depedencias, se procede a copiar y renombra el archivo que contiene las variables de entorno `.env.example`, con el comando de a continuación:
 
