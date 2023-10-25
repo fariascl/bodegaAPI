@@ -49,7 +49,6 @@ Y se podrá visualizar a través de `http://localhost:8000/api`
 
 # Rutas
 
-## Bodegas
 En base al enunciado de la prueba, se pide mostrar bodegas, dispositivos, modelos y marcas, por lo que se define que las rutas que corresponden a esto son las siguientes:
 
 **Descripción: Listar las marcas (id, nombre)**
@@ -57,6 +56,7 @@ En base al enunciado de la prueba, se pide mostrar bodegas, dispositivos, modelo
 Ruta: `/api/marcas/all`
 
 Método: GET
+
 
 **Descripción: Listar modelos de una marca (id, nombre, marca)**
 
