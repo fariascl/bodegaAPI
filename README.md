@@ -1,6 +1,7 @@
 # bodegaAPI
 Back-end de prueba técnica de postulación a Mundo.
-Autor: Alejandro Farías
+
+**Autor: Alejandro Farías**
 
 ## Instalación
 
