@@ -29,6 +29,8 @@ Después de instalar las depedencias, se procede a copiar y renombra el archivo 
 
 `cp .env.example .env`
 
+Y se modifica las variables de entorno del archivo `.env`:
+
 ```
 DB_DATABASE=<nombre_base_datos>
 DB_USERNAME=<usuario_base_datos>
