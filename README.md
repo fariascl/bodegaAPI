@@ -51,6 +51,8 @@ Si todo resulta satisfactoriamente, se puede levantar la API con:
 
 Y se podrá visualizar a través de `http://localhost:8000/api`
 
+*Nota 2: Es posible que Laravel no genere la APP_KEY, por lo cual será necesario ejecutar el comando `php artisan key:generate` para que se genere y que defina en el .env.*
+
 # Rutas
 
 En base al enunciado de la prueba, se pide mostrar bodegas, dispositivos, modelos y marcas, por lo que se define que las rutas que corresponden a esto son las siguientes:
