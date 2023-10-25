@@ -53,39 +53,39 @@ En base al enunciado de la prueba, se pide mostrar bodegas, dispositivos, modelo
 
 **Descripción: Listar las marcas (id, nombre)**
 
-Ruta: `/api/marcas/all`
+> Ruta: `/api/marcas/all`
 
-Método: GET
+> Método: GET
 
 
 **Descripción: Listar modelos de una marca (id, nombre, marca)**
 
-Ruta: `/api/modelos/getbymarca/{:id_marca}`
+> Ruta: `/api/modelos/getbymarca/{:id_marca}`
 
-Método: GET
+> Método: GET
 
 
 **Descripción: Listar dispositivos de un modelo o marca**
 
 **Por marca**:
 
-Ruta: `/api/dispositivos/getbymarca/{:id_marca}`
+> Ruta: `/api/dispositivos/getbymarca/{:id_marca}`
 
-Método: GET
+> Método: GET
 
 
 **Por modelo**:
 
-Ruta: `/api/dispositivos/getbymodelo/{:id_modelo}`
+> Ruta: `/api/dispositivos/getbymodelo/{:id_modelo}`
 
-Método: GET
+> Método: GET
 
 
 **Descripción: Listar los dispositivos existentes en una bodega**
 
-Ruta: `/api/dispositivos/getbybodega/{id}`
+> Ruta: `/api/dispositivos/getbybodega/{id}`
 
-Método: GET
+> Método: GET
 
 
 ## Resto de rutas:
