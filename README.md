@@ -1,5 +1,5 @@
 # bodegaAPI
-Back-end de prueba técnica de postulación a Mundo.
+Back-end de prueba técnica de reclutamiento a Mundo.
 
 **Autor: Alejandro Farías**
 
