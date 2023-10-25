@@ -27,7 +27,11 @@ class DispositivoRepository
 
     public function getByMarca($request)
     {
-        $dispositivos = Dispositivo::with('marca')->where('marca_id', $request->id)->get();
+        $dispositivos = Dispositivo::with('modelo.marca')
+            ->whereHas('modelo.marca', function ($query) use ($request) {
+                $query->where('id', $request->id);
+            })
+            ->get();
         return response()->json(['dispositivos' => $dispositivos], Response::HTTP_OK);
     }
 

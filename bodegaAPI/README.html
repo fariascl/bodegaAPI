@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>README.html</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"  />
+<link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"  /><meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'><style> body { box-sizing: border-box; max-width: 740px; width: 100%; margin: 40px auto; padding: 0 10px; } </style><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script><script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script><script>document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('markdown-body'); document.querySelectorAll('pre[lang] > code').forEach((code) => { code.classList.add(code.parentElement.lang); }); document.querySelectorAll('pre > code').forEach((code) => { hljs.highlightBlock(code); }); });</script>
+</head>
+
+<body>
+
+<h1>bodegaAPI</h1>
+
+<p>Back-end de prueba técnica de postulación a Mundo.
+Autor: Alejandro Farías</p>
+
+<h2>Instalación</h2>
+
+<p>Para comenzar, es necesario tener <code>Git</code> y <code>Composer</code> instalado en el sistema.</p>
+
+<p>De ser así, lo primero que hay que hacer es clonar el repositorio:</p>
+
+<p><code>git clone https://github.com/fariascl/bodegaAPI.git</code></p>
+
+<p>Luego, se accede al directorio donde fue clonado el proyecto:</p>
+
+<p><code>cd /donde/esta/el/repo</code></p>
+
+<p>Estando en el directorio del repositorio, se accede a la carpeta donde está el código fuente:</p>
+
+<p><code>cd bodegaAPI/</code></p>
+
+<p>Y allí se procede a instalar los paquetes de laravel, que están descritos en el <code>package.json</code></p>
+
+<p><code>composer install</code></p>
+
+<p>Después de instalar las depedencias, se procede a copiar y renombra el archivo que contiene las variables de entorno <code>.env.example</code>, con el comando de a continuación:</p>
+
+<p><code>cp .env.example .env</code></p>
+
+<p><code>
+DB_DATABASE=&lt;nombre_base_datos&gt;
+DB_USERNAME=&lt;usuario_base_datos&gt;
+DB_PASSWORD=&lt;contraseña_base_de_datos&gt;
+</code></p>
+
+<p>Para finalizar, se deben ejecutar las migraciones:</p>
+
+<p><code>php artisan migrate</code></p>
+
+<p>Y poblar la base de datos:</p>
+
+<p><code>php artisan db:seed</code></p>
+
+<p>Si todo resulta satisfactoriamente, se puede levantar la API con:</p>
+
+<p><code>php artisan serve</code></p>
+
+<p>Y se podrá visualizar a través de <code>http://localhost:8000/api</code></p>
+
+<h1>Rutas</h1>
+
+<h2>Bodegas</h2>
+
+<p>En base al enunciado de la prueba, se pide mostrar bodegas, dispositivos, modelos y marcas, por lo que se define que las rutas que corresponden a esto son las siguientes:</p>
+
+<p>Descripción: Listar las marcas (id, nombre)
+Ruta: <code>/api/marcas/all</code>
+Método: GET</p>
+
+<p>Descripción: Listar modelos de una marca (id, nombre, marca)
+Ruta: <code>/api/modelos/getbymarca/{:id_marca}</code>
+Método: GET</p>
+
+<p>Descripción: Listar dispositivos de un modelo o marca:
+Por marca:
+Ruta: <code>/api/dispositivos/getbymarca/{:id_marca}</code>
+Método: GET</p>
+
+<p>Por modelo:
+Ruta: <code>/api/dispositivos/getbymodelo/{:id_modelo}</code>
+Método: GET</p>
+
+<p>Descripción: Listar los dispositivos existentes en una bodega
+Ruta: <code>/api/dispositivos/getbybodega/{id}</code>
+Método: GET</p>
+
+<h2>Resto de rutas:</h2>
+
+<p><strong>Marcas</strong>:</p>
+
+<p>Ruta: <code>/api/marcas/get/{:id_marca}</code> 
+Método: GET</p>
+
+<p>Ruta: <code>/api/marcas/save</code>
+Método: POST</p>
+
+<p><code>json
+{
+    "nombre": :nombre
+}
+</code></p>
+
+<p>Ruta: <code>/api/modelos/all</code> 
+Método: GET</p>
+
+<p><strong>Modelos</strong>:</p>
+
+<p>Ruta: <code>api/modelos/get/{id}</code> 
+Método: GET
+Ruta: <code>/api/modelos/save</code>
+Método: POST</p>
+
+<p><code>json
+{
+    "nombre": :nombre,
+    "marca_id": :marca_id
+}
+</code></p>
+
+<p><strong>Bodegas</strong>:</p>
+
+<p>Ruta: <code>/api/bodegas/all</code>
+Método: GET</p>
+
+<p>Ruta: <code>/api/bodegas/get/{id}</code>
+Método: GET</p>
+
+<p>Ruta: <code>/api/bodegas/save</code>
+Método: POST</p>
+
+<p><code>json
+{
+    "nombre": :nombre
+}
+</code></p>
+
+<p><strong>Dispositivos</strong>:
+Ruta: <code>/api/dispositivos/all</code>
+Método: GET</p>
+
+<p>Ruta: <code>/api/dispositivos/get/{:bodega_id}/{:modelo_id}</code>
+Método: GET</p>
+
+<p>Ruta: <code>/api/dispositivos/get/{id}</code> 
+Método: GET</p>
+
+<p>Ruta: <code>/api/dispositivos/save</code> 
+Método: POST</p>
+
+<p><code>json
+{
+    "nombre": :nombre,
+    "modelo_id": :modelo_id,
+    "bodega_id" :bodega_id
+}
+</code></p>
+
+</body>
+</html>

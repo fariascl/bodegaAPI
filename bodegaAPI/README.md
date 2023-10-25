@@ -1,66 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# bodegaAPI
+Back-end de prueba técnica de postulación a Mundo.
+Autor: Alejandro Farías
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instalación
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para comenzar, es necesario tener `Git` y `Composer` instalado en el sistema.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+De ser así, lo primero que hay que hacer es clonar el repositorio:
 
-## Learning Laravel
+`git clone https://github.com/fariascl/bodegaAPI.git`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Luego, se accede al directorio donde fue clonado el proyecto:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+`cd /donde/esta/el/repo`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Estando en el directorio del repositorio, se accede a la carpeta donde está el código fuente:
 
-## Laravel Sponsors
+`cd bodegaAPI/`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Y allí se procede a instalar los paquetes de laravel, que están descritos en el `package.json`
 
-### Premium Partners
+`composer install`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Después de instalar las depedencias, se procede a copiar y renombra el archivo que contiene las variables de entorno `.env.example`, con el comando de a continuación:
 
-## Contributing
+`cp .env.example .env`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+DB_DATABASE=<nombre_base_datos>
+DB_USERNAME=<usuario_base_datos>
+DB_PASSWORD=<contraseña_base_de_datos>
+```
 
-## Code of Conduct
+Para finalizar, se deben ejecutar las migraciones:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+`php artisan migrate`
 
-## Security Vulnerabilities
+Y poblar la base de datos:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+`php artisan db:seed`
 
-## License
+Si todo resulta satisfactoriamente, se puede levantar la API con:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+`php artisan serve`
+
+Y se podrá visualizar a través de `http://localhost:8000/api`
+
+# Rutas
+
+## Bodegas
+En base al enunciado de la prueba, se pide mostrar bodegas, dispositivos, modelos y marcas, por lo que se define que las rutas que corresponden a esto son las siguientes:
+
+Descripción: Listar las marcas (id, nombre)
+Ruta: `/api/marcas/all`
+Método: GET
+
+Descripción: Listar modelos de una marca (id, nombre, marca)
+Ruta: `/api/modelos/getbymarca/{:id_marca}`
+Método: GET
+
+Descripción: Listar dispositivos de un modelo o marca:
+Por marca:
+Ruta: `/api/dispositivos/getbymarca/{:id_marca}`
+Método: GET
+
+Por modelo:
+Ruta: `/api/dispositivos/getbymodelo/{:id_modelo}`
+Método: GET
+
+Descripción: Listar los dispositivos existentes en una bodega
+Ruta: `/api/dispositivos/getbybodega/{id}`
+Método: GET
+
+## Resto de rutas:
+
+**Marcas**:
+
+Ruta: `/api/marcas/get/{:id_marca}` 
+Método: GET
+
+Ruta: `/api/marcas/save`
+Método: POST
+
+``` json
+{
+    "nombre": :nombre
+}
+```
+
+Ruta: `/api/modelos/all` 
+Método: GET
+
+**Modelos**:
+
+Ruta: `api/modelos/get/{id}` 
+Método: GET
+Ruta: `/api/modelos/save`
+Método: POST
+
+``` json
+{
+    "nombre": :nombre,
+    "marca_id": :marca_id
+}
+```
+
+**Bodegas**:
+
+Ruta: `/api/bodegas/all`
+Método: GET
+
+Ruta: `/api/bodegas/get/{id}`
+Método: GET
+
+Ruta: `/api/bodegas/save`
+Método: POST
+
+``` json
+{
+    "nombre": :nombre
+}
+```
+
+**Dispositivos**:
+Ruta: `/api/dispositivos/all`
+Método: GET
+
+Ruta: `/api/dispositivos/get/{:bodega_id}/{:modelo_id}`
+Método: GET
+
+Ruta: `/api/dispositivos/get/{id}` 
+Método: GET
+
+Ruta: `/api/dispositivos/save` 
+Método: POST
+
+``` json
+{
+    "nombre": :nombre,
+    "modelo_id": :modelo_id,
+    "bodega_id" :bodega_id
+}
+```

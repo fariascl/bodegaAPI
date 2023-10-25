@@ -33,6 +33,7 @@ Route::prefix('/dispositivos')->group(function () use ($router) {
     $router->get('/get/{id}', [DispositivoController::class, 'get']);
     $router->post('/save', [DispositivoController::class, 'save']);
     $router->get('/getbymodelo/{id}', [DispositivoController::class, 'getByModelo']);
+    $router->get('/getbymarca/{id}', [DispositivoController::class, 'getByMarca']);
     $router->get('/getbybodega/{id}', [DispositivoController::class, 'getByBodega']);
     $router->get('/get/{bodega_id}/{modelo_id}', [DispositivoController::class, 'getByModeloBodega']);
 });

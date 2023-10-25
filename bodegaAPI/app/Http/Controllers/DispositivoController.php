@@ -44,4 +44,9 @@ class DispositivoController extends Controller
     {
         return $this->dispositivoRepo->getByModeloBodega($request);
     }
+
+    public function getByMarca(Request $request)
+    {
+        return $this->dispositivoRepo->getByMarca($request);
+    }
 }
