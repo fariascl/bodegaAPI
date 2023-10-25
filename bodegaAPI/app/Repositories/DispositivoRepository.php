@@ -37,7 +37,7 @@ class DispositivoRepository
 
     public function getByModelo($request)
     {
-        $dispositivos = Dispositivo::with('modelo')->where('modelo_id', $request->id)->get();
+        $dispositivos = Dispositivo::with('modelo.marca')->where('modelo_id', $request->id)->get();
         return response()->json(['dispositivos' => $dispositivos], Response::HTTP_OK);
     }
 
