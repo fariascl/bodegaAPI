@@ -15,7 +15,7 @@ class MarcaRepository
 
     public function get($request)
     {
-        $marca = Marca::where('id', $request->id);
+        $marca = Marca::where('id', $request->id)->first();
         return response()->json(['marca' => $marca], Response::HTTP_OK);
     }
 
