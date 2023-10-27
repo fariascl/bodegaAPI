@@ -21,7 +21,7 @@ class ModeloRepository
 
     public function get($request)
     {
-        $modelo = Modelo::where('id', $request->id);
+        $modelo = Modelo::where('id', $request->id)->first();
         return response()->json(['modelo' => $modelo], Response::HTTP_OK);
     }
 
