@@ -15,7 +15,7 @@ class BodegaRepository
 
     public function get($request)
     {
-        $bodega = Bodega::where('id', $request->id);
+        $bodega = Bodega::where('id', $request->id)->first();
         return response()->json(['bodega' => $bodega], Response::HTTP_OK);
     }
 
